@@ -4,7 +4,7 @@
 
   Backbone.Collection.prototype.syncDirty = function() {
     var id, ids, model, store, _i, _len, _results;
-    store = localStorage.getItem("" + this.url + "_dirty");
+    store = localStorage.getItem((typeof (this.url) == "function" ? this.url() : this.url) + "_dirty");
     ids = (store && store.split(',')) || [];
     _results = [];
     for (_i = 0, _len = ids.length; _i < _len; _i++) {
@@ -19,7 +19,7 @@
 
   Backbone.Collection.prototype.syncDestroyed = function() {
     var id, ids, model, store, _i, _len, _results;
-    store = localStorage.getItem("" + this.url + "_destroyed");
+    store = localStorage.getItem((typeof (this.url) == "function" ? this.url() : this.url) + "_destroyed");
     ids = (store && store.split(',')) || [];
     _results = [];
     for (_i = 0, _len = ids.length; _i < _len; _i++) {
